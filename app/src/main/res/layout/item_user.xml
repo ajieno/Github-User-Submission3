@@ -29,32 +29,43 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@color/teal_200" />
+                app:srcCompat="@drawable/ic_github_black" />
 
             <TextView
-                android:id="@+id/txt_username"
+                android:id="@+id/txt_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:text="username"
+                android:text="name"
                 app:layout_constraintStart_toEndOf="@+id/img_avatar"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/txt_name"
+                android:id="@+id/txt_company"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="24dp"
                 android:ellipsize="end"
-                android:maxLines="2"
-                android:text="name"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:maxLines="1"
+                android:text="company"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/txt_username"
-                app:layout_constraintTop_toBottomOf="@+id/txt_username" />
+                app:layout_constraintStart_toStartOf="@+id/txt_name"
+                app:layout_constraintTop_toBottomOf="@+id/txt_name" />
+
+            <TextView
+                android:id="@+id/txt_location"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="location"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/txt_company"
+                app:layout_constraintTop_toBottomOf="@+id/txt_company" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

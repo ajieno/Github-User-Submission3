@@ -1,5 +1,6 @@
 package com.ajieno.githubuser.util
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,15 +8,15 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.ajieno.githubuser.R
+import com.ajieno.githubuser.activity.DetailUserActivity
 import com.ajieno.githubuser.model.User
 import com.ajieno.githubuser.util.ListUserAdapter.ListViewHolder
-import com.bumptech.glide.Glide
-import org.w3c.dom.Text
 
 class ListUserAdapter(private  val listuser: ArrayList<User>) : RecyclerView.Adapter<ListViewHolder>() {
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var txtUsername: TextView = itemView.findViewById(R.id.txt_username)
         var txtName: TextView = itemView.findViewById(R.id.txt_name)
+        var txtCompany: TextView = itemView.findViewById(R.id.txt_company)
+        var txtLocation: TextView = itemView.findViewById(R.id.txt_location)
         var imgAvatar: ImageView = itemView.findViewById(R.id.img_avatar)
     }
 
@@ -27,8 +28,9 @@ class ListUserAdapter(private  val listuser: ArrayList<User>) : RecyclerView.Ada
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val user = listuser [position]
 
-        holder.txtUsername.text = user.username
         holder.txtName.text = user.name
+        holder.txtCompany.text = user.company
+        holder.txtLocation.text = user.location
         holder.imgAvatar.setImageResource(user.avatar)
 
 
@@ -42,6 +44,12 @@ class ListUserAdapter(private  val listuser: ArrayList<User>) : RecyclerView.Ada
             user.follower,
             user.following,
         )
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context, DetailUserActivity::class.java)
+            intent.putExtra("Extra", userExtra)
+            holder.itemView.context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {
