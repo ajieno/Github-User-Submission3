@@ -1,5 +1,6 @@
 package com.ajieno.githubuser.util
 
+import com.ajieno.githubuser.R
 import com.ajieno.githubuser.model.User
 
 object UserData {
@@ -30,7 +31,18 @@ object UserData {
     )
 
     private val userAvatar = arrayOf(
-        "aww"
+        R.drawable.user1,
+            R.drawable.user2,
+            R.drawable.user3,
+            R.drawable.user4,
+            R.drawable.user5,
+            R.drawable.user6,
+            R.drawable.user7,
+            R.drawable.user8,
+            R.drawable.user9,
+            R.drawable.user10
+
+
     )
 
     private val userCompany = arrayOf(
@@ -103,8 +115,8 @@ object UserData {
             val list = arrayListOf<User>()
             for (position in userUsername.indices) {
                 val user = User()
-                user.username = userName[position]
-                user.name = userUsername[position]
+                user.username = userUsername[position]
+                user.name = userName[position]
                 user.avatar = userAvatar[position]
                 user.company = userCompany[position]
                 user.location = userLocation[position]

@@ -6,7 +6,7 @@ import android.os.Parcelable
 class User (
     var username: String? = "",
     var name: String? = "",
-    var avatar: String? = "",
+    var avatar: Int = 0,
     var company: String? = "",
     var location: String? = "",
     var repository: String? = "",
@@ -15,21 +15,20 @@ class User (
 
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString()
-    ) {
+            parcel.readString(),
+            parcel.readString(),
+            parcel.readInt(),
+            parcel.readString(),
+            parcel.readString(),
+            parcel.readString(),
+            parcel.readString(),
+            parcel.readString()) {
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(username)
         parcel.writeString(name)
-        parcel.writeString(avatar)
+        parcel.writeInt(avatar)
         parcel.writeString(company)
         parcel.writeString(location)
         parcel.writeString(repository)

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ajieno.githubuser.R
 import com.ajieno.githubuser.model.User
 import com.ajieno.githubuser.util.ListUserAdapter.ListViewHolder
+import com.bumptech.glide.Glide
 import org.w3c.dom.Text
 
 class ListUserAdapter(private  val listuser: ArrayList<User>) : RecyclerView.Adapter<ListViewHolder>() {
@@ -28,6 +29,8 @@ class ListUserAdapter(private  val listuser: ArrayList<User>) : RecyclerView.Ada
 
         holder.txtUsername.text = user.username
         holder.txtName.text = user.name
+        holder.imgAvatar.setImageResource(user.avatar)
+
 
         val userExtra = User(
             user.username,
