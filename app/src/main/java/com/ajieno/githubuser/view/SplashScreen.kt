@@ -1,4 +1,4 @@
-package com.ajieno.githubuser.activity
+package com.ajieno.githubuser.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

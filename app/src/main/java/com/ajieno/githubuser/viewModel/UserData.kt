@@ -1,4 +1,4 @@
-package com.ajieno.githubuser.util
+package com.ajieno.githubuser.viewModel
 
 import com.ajieno.githubuser.R
 import com.ajieno.githubuser.model.User

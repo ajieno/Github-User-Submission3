@@ -1,4 +1,4 @@
-package com.ajieno.githubuser.util
+package com.ajieno.githubuser.viewModel
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -8,11 +8,18 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.ajieno.githubuser.R
-import com.ajieno.githubuser.activity.DetailUserActivity
+import com.ajieno.githubuser.view.DetailUserActivity
 import com.ajieno.githubuser.model.User
-import com.ajieno.githubuser.util.ListUserAdapter.ListViewHolder
+import com.ajieno.githubuser.viewModel.ListUserAdapter.ListViewHolder
+
+var userFilterList = ArrayList<User>()
 
 class ListUserAdapter(private  val listuser: ArrayList<User>) : RecyclerView.Adapter<ListViewHolder>() {
+
+    init {
+        userFilterList = listuser
+    }
+
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var txtName: TextView = itemView.findViewById(R.id.txt_name)
         var txtCompany: TextView = itemView.findViewById(R.id.txt_company)
