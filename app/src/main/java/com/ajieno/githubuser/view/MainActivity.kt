@@ -36,8 +36,13 @@ class MainActivity : AppCompatActivity() {
 
         recylerViewConfig()
         getUser()
+        getUser2()
 
 
+    }
+
+    private fun getUser2() {
+        "hiyaaa"
     }
 
     private fun recylerViewConfig() {
