@@ -26,7 +26,7 @@ class DetailUserActivity : AppCompatActivity() {
         txt_detail_follower.setText("Follower : "+user.follower)
         txt_following.setText("Following : "+user.following)
 
-        img_detail_avatar.setImageResource(user.avatar)
+//        img_detail_avatar.setImageResource(user.avatar)
 
 
     }

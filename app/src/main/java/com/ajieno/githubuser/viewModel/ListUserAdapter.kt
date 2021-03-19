@@ -11,6 +11,8 @@ import com.ajieno.githubuser.R
 import com.ajieno.githubuser.view.DetailUserActivity
 import com.ajieno.githubuser.model.User
 import com.ajieno.githubuser.viewModel.ListUserAdapter.ListViewHolder
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 
 var userFilterList = ArrayList<User>()
 
@@ -35,10 +37,12 @@ class ListUserAdapter(private  val listuser: ArrayList<User>) : RecyclerView.Ada
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val user = listuser [position]
 
+        Glide.with(holder.itemView.context)
+                .load(user.avatar)
+                .into(holder.imgAvatar)
         holder.txtName.text = user.name
         holder.txtCompany.text = user.company
         holder.txtLocation.text = user.location
-        holder.imgAvatar.setImageResource(user.avatar)
 
 
         val userExtra = User(
