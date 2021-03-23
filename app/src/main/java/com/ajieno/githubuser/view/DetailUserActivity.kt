@@ -32,12 +32,12 @@ class DetailUserActivity : AppCompatActivity() {
             .load(user.avatar)
             .into(img_detail_avatar)
 
-        viewPagerConfig()
+//        viewPagerConfig()
 
 
     }
 
-    private fun viewPagerConfig() {
-        val viewPagerDetailAdapter = ViewPagerDetailAdapter(this, supportFragmentManager)
-    }
+//    private fun viewPagerConfig() {
+//        val viewPagerDetailAdapter = ViewPagerDetailAdapter(this, supportFragmentManager)
+//    }
 }

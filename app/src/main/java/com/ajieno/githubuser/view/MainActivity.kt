@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity() {
     private fun getDataGitSearch(id: String) {
         progressBar.visibility = View.VISIBLE
         val client = AsyncHttpClient()
-        client.addHeader("Authorization", "token 3e27cd7cb4ad8665dd6d3817d8216228d87e45fe")
+        client.addHeader("Authorization", "token 5b46ebe61d389fe0f98e4d6e7647232118c79252")
         client.addHeader("User-Agent", "request")
         val url = "https://api.github.com/search/users?q=$id"
         client.get(url, object : AsyncHttpResponseHandler() {
@@ -121,7 +121,7 @@ class MainActivity : AppCompatActivity() {
     private fun getDataGit(){
         progressBar.visibility = View.VISIBLE
         val client = AsyncHttpClient()
-        client.addHeader("Authorization", "token 3e27cd7cb4ad8665dd6d3817d8216228d87e45fe")
+        client.addHeader("Authorization", "token 5b46ebe61d389fe0f98e4d6e7647232118c79252")
         client.addHeader("User-Agent", "request")
         val url = "https://api.github.com/users"
         client.get(url, object : AsyncHttpResponseHandler() {
@@ -152,7 +152,7 @@ class MainActivity : AppCompatActivity() {
     private fun getDataGitDetail(id: String) {
         progressBar.visibility = View.VISIBLE
         val client = AsyncHttpClient()
-        client.addHeader("Authorization","token 3e27cd7cb4ad8665dd6d3817d8216228d87e45fe")
+        client.addHeader("Authorization","token 5b46ebe61d389fe0f98e4d6e7647232118c79252")
         client.addHeader("User-Agent","request")
         val url = "https://api.github.com/users/$id"
         client.get(url, object : AsyncHttpResponseHandler() {

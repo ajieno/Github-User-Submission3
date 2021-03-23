@@ -17,11 +17,11 @@ class ViewPagerDetailAdapter(private val mContext: Context, fm: FragmentManager)
         FollowingFragment()
     )
 
-    @StringRes
-    private val tabTitle = intArrayOf(
-        R.string.followers,
-        R.string.following
-    )
+//    @StringRes
+//    private val tabTitle = intArrayOf(
+//        R.string.followers,
+//        R.string.following
+//    )
 
     override fun getItem(position: Int): Fragment {
         return pages[position]
@@ -31,7 +31,7 @@ class ViewPagerDetailAdapter(private val mContext: Context, fm: FragmentManager)
         return pages.size
     }
 
-    override fun getPageTitle(position: Int): CharSequence? {
-        return mContext.resources.getString(tabTitle[position])
-    }
+//    override fun getPageTitle(position: Int): CharSequence? {
+//        return mContext.resources.getString(tabTitle[position])
+//    }
 }
