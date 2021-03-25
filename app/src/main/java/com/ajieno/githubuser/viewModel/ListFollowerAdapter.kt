@@ -1,26 +1,21 @@
 package com.ajieno.githubuser.viewModel
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.recyclerview.widget.AdapterListUpdateCallback
 import androidx.recyclerview.widget.RecyclerView
 import com.ajieno.githubuser.R
-import com.ajieno.githubuser.view.DetailUserActivity
 import com.ajieno.githubuser.model.User
-import com.ajieno.githubuser.viewModel.ListUserAdapter.ListViewHolder
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 
-var userFilterList = ArrayList<User>()
+var followerFilterList = ArrayList<User>()
 
-class ListUserAdapter(private  val listuser: ArrayList<User>) : RecyclerView.Adapter<ListViewHolder>() {
+class ListFollowerAdapter(private  val listuser: ArrayList<User>) : RecyclerView.Adapter<ListFollowerAdapter.ListViewHolder>() {
 
     init {
-        userFilterList = listuser
+        followerFilterList = listuser
     }
 
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -29,7 +24,6 @@ class ListUserAdapter(private  val listuser: ArrayList<User>) : RecyclerView.Ada
         var txtLocation: TextView = itemView.findViewById(R.id.txt_location)
         var imgAvatar: ImageView = itemView.findViewById(R.id.img_avatar)
     }
-
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ListViewHolder {
         val view: View = LayoutInflater.from(viewGroup.context).inflate(R.layout.item_user, viewGroup, false)
@@ -46,23 +40,6 @@ class ListUserAdapter(private  val listuser: ArrayList<User>) : RecyclerView.Ada
         holder.txtCompany.text = user.company
         holder.txtLocation.text = user.location
 
-
-        val userExtra = User(
-            user.username,
-            user.name,
-            user.avatar,
-            user.location,
-            user.company,
-            user.repository,
-            user.follower,
-            user.following,
-        )
-
-        holder.itemView.setOnClickListener {
-            val intent = Intent(holder.itemView.context, DetailUserActivity::class.java)
-            intent.putExtra("Extra", userExtra)
-            holder.itemView.context.startActivity(intent)
-        }
     }
 
     override fun getItemCount(): Int {

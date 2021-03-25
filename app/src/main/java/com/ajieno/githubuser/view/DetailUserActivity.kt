@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.viewpager2.widget.ViewPager2
 import com.ajieno.githubuser.R
 import com.ajieno.githubuser.model.User
+import com.ajieno.githubuser.viewModel.ViewPagerDetailAdapter
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_detail_user.*
 
@@ -32,12 +33,17 @@ class DetailUserActivity : AppCompatActivity() {
             .load(user.avatar)
             .into(img_detail_avatar)
 
-//        viewPagerConfig()
+        viewPagerConfig()
 
 
     }
 
-//    private fun viewPagerConfig() {
-//        val viewPagerDetailAdapter = ViewPagerDetailAdapter(this, supportFragmentManager)
-//    }
+    private fun viewPagerConfig() {
+        val viewPagerDetailAdapter = ViewPagerDetailAdapter(this, supportFragmentManager)
+        view_pager.adapter = viewPagerDetailAdapter
+        tabs.setupWithViewPager(view_pager)
+        supportActionBar?.elevation = 0f
+    }
+
+
 }
