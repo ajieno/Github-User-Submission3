@@ -19,7 +19,7 @@ class ViewPagerDetailAdapter(private val mContext: Context, fm: FragmentManager)
 
     @StringRes
     private val tabTitle = intArrayOf(
-            R.string.followers,
+            R.string.follower,
             R.string.following
     )
 

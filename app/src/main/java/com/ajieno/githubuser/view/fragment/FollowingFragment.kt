@@ -10,6 +10,8 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ajieno.githubuser.R
 import com.ajieno.githubuser.model.User
+import com.ajieno.githubuser.model.UserFavorite
+import com.ajieno.githubuser.view.DetailUserActivity
 import com.ajieno.githubuser.viewModel.ListFollowingAdapter
 import com.ajieno.githubuser.viewModel.followingFilterList
 import com.loopj.android.http.AsyncHttpClient
@@ -25,15 +27,17 @@ class FollowingFragment : Fragment() {
     companion object{
         private val TAG = FollowingFragment::class.java.simpleName
         const val Extra = "Extra"
+        const val Extra_fav = "Extra_fav"
+        private var userFavorite: UserFavorite? = null
+        private lateinit var user1: UserFavorite
+        private lateinit var user2: User
     }
 
     private var listData: ArrayList<User> = ArrayList()
     private lateinit var adapter: ListFollowingAdapter
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_following, container, false)
     }
 
@@ -41,8 +45,15 @@ class FollowingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         adapter = ListFollowingAdapter(listData)
         listData.clear()
-        val dataUser = activity!!.intent.getParcelableExtra(Extra) as User
-        getDataGit(dataUser.username.toString())
+
+        FollowingFragment.userFavorite = activity!!.intent.getParcelableExtra(DetailUserActivity.Extra_fav)
+        if (FollowingFragment.userFavorite != null) {
+            FollowingFragment.user1 = activity!!.intent.getParcelableExtra(FollowersFragment.Extra_fav) as UserFavorite
+            getDataGit(FollowingFragment.user1.username.toString())
+        } else {
+            FollowingFragment.user2 = activity!!.intent.getParcelableExtra(FollowersFragment.Extra) as User
+            getDataGit(FollowingFragment.user2.username.toString())
+        }
     }
 
     private fun getDataGit(id: String){

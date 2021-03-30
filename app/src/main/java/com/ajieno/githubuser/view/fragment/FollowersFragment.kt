@@ -10,6 +10,8 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ajieno.githubuser.R
 import com.ajieno.githubuser.model.User
+import com.ajieno.githubuser.model.UserFavorite
+import com.ajieno.githubuser.view.DetailUserActivity
 import com.ajieno.githubuser.viewModel.ListFollowerAdapter
 import com.ajieno.githubuser.viewModel.ListFollowingAdapter
 import com.ajieno.githubuser.viewModel.followerFilterList
@@ -27,15 +29,17 @@ class FollowersFragment : Fragment() {
     companion object{
         private val TAG = FollowersFragment::class.java.simpleName
         const val Extra = "Extra"
+        const val Extra_fav = "Extra_fav"
+        private var userFavorite: UserFavorite? = null
+        private lateinit var user1: UserFavorite
+        private lateinit var user2: User
     }
 
     private var listData: ArrayList<User> = ArrayList()
     private lateinit var adapter: ListFollowerAdapter
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_followers, container, false)
     }
 
@@ -43,8 +47,15 @@ class FollowersFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         adapter = ListFollowerAdapter(listData)
         listData.clear()
-        val dataUser = activity!!.intent.getParcelableExtra(Extra) as User
-        getDataGit(dataUser.username.toString())
+
+        userFavorite = activity!!.intent.getParcelableExtra(DetailUserActivity.Extra_fav)
+        if (userFavorite != null) {
+            user1 = activity!!.intent.getParcelableExtra(Extra_fav) as UserFavorite
+            getDataGit(user1.username.toString())
+        } else {
+            user2 = activity!!.intent.getParcelableExtra(Extra) as User
+            getDataGit(user2.username.toString())
+        }
     }
 
     private fun getDataGit(id: String){

@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.SearchView
 import android.widget.Toast
@@ -44,6 +46,28 @@ class MainActivity : AppCompatActivity() {
             getDataGit()
         }
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.favorite -> {
+                val i = Intent(this, FavoriteActivity::class.java)
+                startActivity(i)
+                true
+            }
+            R.id.setting -> {
+                val i = Intent(this, SettingActivity::class.java)
+                startActivity(i)
+                true
+            }
+            else -> true
+        }
     }
 
     private fun recylerViewConfig() {

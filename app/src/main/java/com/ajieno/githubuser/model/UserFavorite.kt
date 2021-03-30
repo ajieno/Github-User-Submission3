@@ -1,11 +1,10 @@
 package com.ajieno.githubuser.model
 
-import android.os.Parcel
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-class User(
+class UserFavorite(
         var username: String? = "",
         var name: String? = "",
         var avatar: String? = "",
