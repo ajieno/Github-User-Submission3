@@ -58,7 +58,7 @@ class FavoriteActivity : AppCompatActivity() {
         } else {
             val list = savedInstanceState.getParcelableArrayList<UserFavorite>(EXTRA_STATE)
             if (list != null) {
-                adapter.listUser = list
+                adapter.listUserFavorite = list
             }
         }
 
@@ -79,16 +79,16 @@ class FavoriteActivity : AppCompatActivity() {
             val favData = deferredNotes.await()
             progressbar_fav.visibility = View.INVISIBLE
             if (favData.size > 0) {
-                adapter.listUser = favData
+                adapter.listUserFavorite = favData
             } else {
-                adapter.listUser = ArrayList()
+                adapter.listUserFavorite = ArrayList()
             }
         }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putParcelableArrayList(EXTRA_STATE, adapter.listUser)
+        outState.putParcelableArrayList(EXTRA_STATE, adapter.listUserFavorite)
     }
 
     override fun onResume() {

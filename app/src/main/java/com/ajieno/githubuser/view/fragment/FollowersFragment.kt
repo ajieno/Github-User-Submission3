@@ -12,10 +12,7 @@ import com.ajieno.githubuser.R
 import com.ajieno.githubuser.model.User
 import com.ajieno.githubuser.model.UserFavorite
 import com.ajieno.githubuser.view.DetailUserActivity
-import com.ajieno.githubuser.viewModel.ListFollowerAdapter
-import com.ajieno.githubuser.viewModel.ListFollowingAdapter
-import com.ajieno.githubuser.viewModel.followerFilterList
-import com.ajieno.githubuser.viewModel.userFilterList
+import com.ajieno.githubuser.viewModel.*
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import cz.msebera.android.httpclient.Header
@@ -28,8 +25,8 @@ class FollowersFragment : Fragment() {
 
     companion object{
         private val TAG = FollowersFragment::class.java.simpleName
-        const val Extra = "Extra"
-        const val Extra_fav = "Extra_fav"
+        const val USER_DATA = "USER_DATA"
+        const val USER_DATA_FAVORITE = "USER_DATA_FAVORITE"
         private var userFavorite: UserFavorite? = null
         private lateinit var user1: UserFavorite
         private lateinit var user2: User
@@ -48,12 +45,12 @@ class FollowersFragment : Fragment() {
         adapter = ListFollowerAdapter(listData)
         listData.clear()
 
-        userFavorite = activity!!.intent.getParcelableExtra(DetailUserActivity.Extra_fav)
+        userFavorite = activity!!.intent.getParcelableExtra(DetailUserActivity.USER_DATA_FAVORITE)
         if (userFavorite != null) {
-            user1 = activity!!.intent.getParcelableExtra(Extra_fav) as UserFavorite
+            user1 = activity!!.intent.getParcelableExtra(USER_DATA_FAVORITE) as UserFavorite
             getDataGit(user1.username.toString())
         } else {
-            user2 = activity!!.intent.getParcelableExtra(Extra) as User
+            user2 = activity!!.intent.getParcelableExtra(USER_DATA) as User
             getDataGit(user2.username.toString())
         }
     }
@@ -173,7 +170,7 @@ class FollowersFragment : Fragment() {
 
     private fun showRecyclerList() {
         rv_followers.layoutManager = LinearLayoutManager(activity)
-        val listDataAdapter = ListFollowerAdapter(followerFilterList)
+        val listDataAdapter = ListFollowerAdapter(filterListFollower)
         rv_followers.adapter = listDataAdapter
 
     }

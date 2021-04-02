@@ -13,7 +13,7 @@ import com.ajieno.githubuser.model.User
 import com.ajieno.githubuser.model.UserFavorite
 import com.ajieno.githubuser.view.DetailUserActivity
 import com.ajieno.githubuser.viewModel.ListFollowingAdapter
-import com.ajieno.githubuser.viewModel.followingFilterList
+import com.ajieno.githubuser.viewModel.filterListFollowing
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import cz.msebera.android.httpclient.Header
@@ -26,8 +26,8 @@ class FollowingFragment : Fragment() {
 
     companion object{
         private val TAG = FollowingFragment::class.java.simpleName
-        const val Extra = "Extra"
-        const val Extra_fav = "Extra_fav"
+        const val USER_DATA = "USER_DATA"
+        const val USER_DATA_FAVORITE = "USER_DATA_FAVORITE"
         private var userFavorite: UserFavorite? = null
         private lateinit var user1: UserFavorite
         private lateinit var user2: User
@@ -46,13 +46,13 @@ class FollowingFragment : Fragment() {
         adapter = ListFollowingAdapter(listData)
         listData.clear()
 
-        FollowingFragment.userFavorite = activity!!.intent.getParcelableExtra(DetailUserActivity.Extra_fav)
-        if (FollowingFragment.userFavorite != null) {
-            FollowingFragment.user1 = activity!!.intent.getParcelableExtra(FollowersFragment.Extra_fav) as UserFavorite
-            getDataGit(FollowingFragment.user1.username.toString())
+        userFavorite = activity!!.intent.getParcelableExtra(DetailUserActivity.USER_DATA_FAVORITE)
+        if (userFavorite != null) {
+            user1 = activity!!.intent.getParcelableExtra(USER_DATA_FAVORITE) as UserFavorite
+            getDataGit(user1.username.toString())
         } else {
-            FollowingFragment.user2 = activity!!.intent.getParcelableExtra(FollowersFragment.Extra) as User
-            getDataGit(FollowingFragment.user2.username.toString())
+            user2 = activity!!.intent.getParcelableExtra(USER_DATA) as User
+            getDataGit(user2.username.toString())
         }
     }
 
@@ -171,7 +171,7 @@ class FollowingFragment : Fragment() {
 
     private fun showRecyclerList() {
         rv_following.layoutManager = LinearLayoutManager(activity)
-        val listDataAdapter = ListFollowingAdapter(followingFilterList)
+        val listDataAdapter = ListFollowingAdapter(filterListFollowing)
         rv_following.adapter = listDataAdapter
 
     }

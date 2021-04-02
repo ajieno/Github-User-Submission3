@@ -30,8 +30,8 @@ class DetailUserActivity : AppCompatActivity() {
     private lateinit var avatar : String
 
     companion object{
-        const val Extra = "Extra"
-        const val Extra_fav = "Extra_fav"
+        const val USER_DATA = "USER_DATA"
+        const val USER_DATA_FAVORITE = "USER_DATA_FAVORITE"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,7 +55,7 @@ class DetailUserActivity : AppCompatActivity() {
         favUserHelper = FavUserHelper.getInstance(applicationContext)
         favUserHelper.open()
 
-        userFavorite = intent.getParcelableExtra(Extra_fav)
+        userFavorite = intent.getParcelableExtra(USER_DATA_FAVORITE)
         if (userFavorite != null){
             setDataFav()            
             isfavorite = true
@@ -85,7 +85,7 @@ class DetailUserActivity : AppCompatActivity() {
     }
 
     private fun setDataFav() {
-        val fav = intent.getParcelableExtra(Extra_fav)  as UserFavorite
+        val fav = intent.getParcelableExtra(USER_DATA_FAVORITE)  as UserFavorite
         name = fav.name.toString()
         username = fav.username.toString()
         company = fav.company.toString()
@@ -97,7 +97,7 @@ class DetailUserActivity : AppCompatActivity() {
     }
 
     private fun setData() {
-        user = intent.getParcelableExtra(Extra)
+        user = intent.getParcelableExtra(USER_DATA)
         name = user.name.toString()
         username = user.username.toString()
         company = user.company.toString()

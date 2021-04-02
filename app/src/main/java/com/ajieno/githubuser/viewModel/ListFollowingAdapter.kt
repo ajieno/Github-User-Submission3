@@ -9,20 +9,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ajieno.githubuser.R
 import com.ajieno.githubuser.model.User
 import com.bumptech.glide.Glide
+import com.squareup.picasso.Picasso
 
-var followingFilterList = ArrayList<User>()
+var filterListFollowing = ArrayList<User>()
 
-class ListFollowingAdapter(private  val listuser: ArrayList<User>) : RecyclerView.Adapter<ListFollowingAdapter.ListViewHolder>() {
+class ListFollowingAdapter(private  val listfolowwingg: ArrayList<User>) : RecyclerView.Adapter<ListFollowingAdapter.ListViewHolder>() {
 
     init {
-        followingFilterList = listuser
+        filterListFollowing = listfolowwingg
     }
 
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var txtName: TextView = itemView.findViewById(R.id.txt_name)
-        var txtCompany: TextView = itemView.findViewById(R.id.txt_company)
-        var txtLocation: TextView = itemView.findViewById(R.id.txt_location)
-        var imgAvatar: ImageView = itemView.findViewById(R.id.img_avatar)
+        var name: TextView = itemView.findViewById(R.id.item_name_txt)
+        var company: TextView = itemView.findViewById(R.id.item_company_txt)
+        var location: TextView = itemView.findViewById(R.id.item_location_txt)
+        var avatar: ImageView = itemView.findViewById(R.id.item_img_avatar)
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ListViewHolder {
@@ -31,19 +32,17 @@ class ListFollowingAdapter(private  val listuser: ArrayList<User>) : RecyclerVie
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val user = listuser [position]
-
-        Glide.with(holder.itemView.context)
-                .load(user.avatar)
-                .into(holder.imgAvatar)
-        holder.txtName.text = user.name
-        holder.txtCompany.text = user.company
-        holder.txtLocation.text = user.location
+        val userdata = listfolowwingg [position]
+        
+        holder.name.text = userdata.name
+        holder.company.text = userdata.company
+        holder.location.text = userdata.location
+        Picasso.get().load(userdata.avatar).into(holder.avatar)
 
     }
 
     override fun getItemCount(): Int {
-        return  listuser.size
+        return  listfolowwingg.size
     }
 
 }

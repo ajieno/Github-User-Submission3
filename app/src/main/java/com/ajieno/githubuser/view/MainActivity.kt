@@ -9,13 +9,11 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.SearchView
 import android.widget.Toast
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.ajieno.githubuser.R
 import com.ajieno.githubuser.model.User
 import com.ajieno.githubuser.viewModel.ListUserAdapter
-import com.ajieno.githubuser.viewModel.userFilterList
+import com.ajieno.githubuser.viewModel.filterListUser
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import cz.msebera.android.httpclient.Header
@@ -223,7 +221,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun showRecyclerList(){
         rv_user.layoutManager = LinearLayoutManager(this@MainActivity)
-        val listUserAdapter = ListUserAdapter(userFilterList)
+        val listUserAdapter = ListUserAdapter(filterListUser)
         rv_user.adapter = listUserAdapter
 
     }

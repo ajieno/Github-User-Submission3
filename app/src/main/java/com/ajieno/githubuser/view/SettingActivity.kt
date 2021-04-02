@@ -14,10 +14,6 @@ class SettingActivity : AppCompatActivity() {
     private lateinit var alarmReceiver: AlarmReceiver
     private lateinit var sharedPreferences: SharedPreferences
 
-    companion object{
-        const val SAVE_ALARM = "set alarm"
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
@@ -30,10 +26,12 @@ class SettingActivity : AppCompatActivity() {
 
         sw_alarm.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked){
-//                alarmReceiver.setRepeatingAlarm(
-//                        this,AlarmReceiver.EXTRA_TYPE,
-//                        "09:00",
-//                        "Let's connect with another")
+                alarmReceiver.setRepeatingAlarm(
+                        this,
+                        "type",
+                        "10:06",
+                        "Let's connect with another in github"
+                )
                 sharedPreferences.edit().putBoolean("alarm",true).apply()
                 Toast.makeText(this, "Alarm Activate", Toast.LENGTH_SHORT).show()
             }else{

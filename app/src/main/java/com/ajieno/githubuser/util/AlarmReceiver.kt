@@ -17,20 +17,15 @@ import java.util.*
 class AlarmReceiver : BroadcastReceiver() {
 
     companion object {
-        const val TYPE_REPEATING = "RepeatingAlarm"
         const val EXTRA_MESSAGE = "message"
         const val EXTRA_TYPE = "type"
 
         private const val ID_REPEATING = 101
-        private const val TIME_REPEATING = "09:00"
 
     }
 
     override fun onReceive(context: Context, intent: Intent) {
-        val type = intent.getStringExtra(EXTRA_TYPE)
         val message = intent.getStringExtra(EXTRA_MESSAGE)
-        val title = "Find more friend in Github User"
-
         showNotif(context, message)
     }
 
@@ -48,7 +43,7 @@ class AlarmReceiver : BroadcastReceiver() {
         val notificationManagerCompat =
                 context?.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val builder = NotificationCompat.Builder(context, channelID)
-                .setContentTitle("Daily Reminder")
+                .setContentTitle("Github User Daily Reminder")
                 .setContentText(message)
                 .setAutoCancel(true)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
